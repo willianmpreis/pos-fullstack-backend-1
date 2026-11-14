@@ -1,30 +1,57 @@
+[⬅ Voltar ao índice da disciplina](https://github.com/willianmpreis/pos-fullstack-backend-1/tree/main)
+
 # Pós-Graduação em Desenvolvimento Full Stack — Desenvolvimento Backend I
 
 Repositório destinado ao versionamento das atividades, exercícios práticos e avaliações desenvolvidos durante a disciplina de **Desenvolvimento Backend I**.
 
-> **Nota de organização:** A branch `main` funciona exclusivamente como índice da disciplina. O código-fonte de cada entrega está isolado em sua respectiva branch abaixo.
+---
+
+## Avaliação 01 — Catálogo de Oficinas
+
+> **Nota de escopo:** A estrutura, a arquitetura de arquivos e os recursos tecnológicos empregados neste projeto foram desenvolvidos em estrita conformidade com as especificações exigidas pelo documento oficial da avaliação e seguindo as melhores práticas apresentadas nas aulas da disciplina.
 
 ---
 
-## Índice de Entregas
+## 🚀 Tecnologias e Ferramentas Utilizadas
 
-| Tipo | Entrega | Descrição | Branch / Acesso |
-| :--- | :--- | :--- | :--- |
-| **Avaliação** | Avaliação 01 | *[Em breve]* | [`avaliacao-01`](https://github.com/willianmpreis/pos-fullstack-backend-1/tree/avaliacao-01) |
-| **Atividade** | Atividade 01 | *[Em breve]* | `atividade-01` |
+O projeto foi construído utilizando exclusivamente a stack obrigatória da disciplina:
+* Node.js
+* Express & Express Generator
+* Handlebars (para renderização de views no servidor)
+* Bootstrap (versão offline incorporada para estilização e componentes visuais)[cite: 2, 3]
 
 ---
 
-## Como navegar entre as entregas localmente
+## 🛠️ Funcionalidades Implementadas
 
-Caso queira clonar o repositório e alternar entre as entregas na sua máquina:
+* **Catálogo em Memória:** Armazenamento estruturado em módulos utilizando objetos JavaScript assíncronos.
+* **Painel de Indicadores:** Cálculo dinâmico em tempo real de total de oficinas, abertas, encerradas e somatório de carga horária das ativas.
+* **Filtro de Inscrições:** Alternância rápida entre a visualização completa ("Todas as Oficinas") e apenas as com "Inscrições Abertas".
+* **CRUD Completo:** Cadastro, consulta detalhada (com suporte a quebras de linha via `<pre>`), edição e exclusão protegida por janela modal do Bootstrap.
+* **Gerenciamento de Situação:** Alternância ágil entre abrir/encerrar inscrições diretamente pela tabela principal.
+* **Pesquisa por Título:** Busca sensível e flexível baseada no termo digitado pelo usuário.[cite: 1, 2]
 
+---
+
+## ⚙️ Como Executar o Projeto Localmente
+
+Siga os passos abaixo para rodar a aplicação na sua máquina:
+
+### 1. Pré-requisitos
+* Ter o [Node.js](https://nodejs.org/) instalado.
+* Ter o **Express Generator** instalado (`npm install -g express-generator`).
+
+### 2. Passos para execução
 ```bash
-# 1. Clone o repositório
+# 1. Clone o repositório e acesse a pasta do projeto
 git clone [https://github.com/willianmpreis/pos-fullstack-backend-1.git](https://github.com/willianmpreis/pos-fullstack-backend-1.git)
+cd pos-fullstack-backend-1
 
-# 2. Liste todas as branches remotas disponíveis
-git branch -a
-
-# 3. Acesse a branch da entrega desejada
+# 2. Mude para a branch da Avaliação 01
 git checkout avaliacao-01
+
+# 3. Instale as dependências
+npm install
+
+# 4. Inicie a aplicação
+npm start
