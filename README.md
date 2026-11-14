@@ -10,7 +10,7 @@ Repositório destinado ao versionamento das atividades, exercícios práticos e 
 
 | Tipo | Entrega | Descrição | Branch / Acesso |
 | :--- | :--- | :--- | :--- |
-| **Avaliação** | Avaliação 01 | *[Em breve]* | [`avaliacao-01`](https://github.com/willianmpreis/pos-fullstack-backend-1/tree/avaliacao-01) |
+| **Avaliação** | Avaliação 01 | *Controle de oficinas* | [`avaliacao-01`](https://github.com/willianmpreis/pos-fullstack-backend-1/tree/avaliacao-01) |
 | **Atividade** | Atividade 01 | *[Em breve]* | `atividade-01` |
 
 ---
