@@ -1,2 +1,83 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h2 class="mb-3">Oficinas cadastradas</h2>
+
+<!-- resumo do catálogo completo (calculado no controller) -->
+<p class="mb-3">
+  Total de oficinas:
+  <strong>{{resumo.total}}</strong>
+  &nbsp; Abertas:
+  <strong>{{resumo.abertas}}</strong>
+  &nbsp; Encerradas:
+  <strong>{{resumo.encerradas}}</strong>
+  &nbsp; Carga horária das abertas:
+  <strong>{{resumo.carga_horaria_abertas}} h</strong>
+</p>
+
+<!-- opções de visualização: a opção atual aparece como botão preenchido -->
+<div class="mb-3">
+  <a href="/" class="btn {{#if filtro_abertas}}btn-link{{else}}btn-primary{{/if}} btn-sm">Todas as Oficinas</a>
+  <a href="/abertas" class="btn {{#if filtro_abertas}}btn-primary{{else}}btn-link{{/if}} btn-sm">Inscrições Abertas</a>
+</div>
+
+{{#if resumo.total}}
+  {{#if nenhuma_aberta}}
+    <!-- há oficinas cadastradas, mas todas estão encerradas -->
+    <p class="mb-3">Nenhuma oficina está com inscrições abertas</p>
+  {{else}}
+    <table class="table table-hover align-middle mb-3">
+      <thead class="table-primary text-center">
+        <tr>
+          <th>Título</th>
+          <th>Carga horária</th>
+          <th>Inscrições</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- each é como um laço for, percorrendo todas as oficinas -->
+        {{#each oficinas}}
+          <tr>
+            <td><strong>{{this.titulo}}</strong></td>
+            <td class="text-center">{{this.carga_horaria}} h</td>
+            <td class="text-center">
+              {{#if this.inscricoes_abertas}}Abertas{{else}}Encerradas{{/if}}
+            </td>
+            <td class="text-center">
+              <a href="/oficina/consulta/{{this.id}}" class="btn btn-primary btn-sm me-1">Consultar</a>
+              <a href="/oficina/altera/{{this.id}}" class="btn btn-primary btn-sm me-1">Editar</a>
+              <button type="button" class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#modalExclui{{this.id}}">Excluir</button>
+              <a href="/oficina/alterna/{{this.id}}" class="btn btn-outline-secondary btn-sm">
+                {{#if this.inscricoes_abertas}}Encerrar{{else}}Reabrir{{/if}}
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <!-- janela modal de confirmação de exclusão, uma para cada oficina -->
+    {{#each oficinas}}
+      <div class="modal fade" id="modalExclui{{this.id}}" tabindex="-1" aria-labelledby="tituloModal{{this.id}}" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tituloModal{{this.id}}">Excluir oficina</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+              Confirma a exclusão de
+              <strong>{{this.titulo}}</strong>?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <a href="/oficina/deleta/{{this.id}}" class="btn btn-danger">Confirmar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  {{/if}}
+{{else}}
+  <!-- catálogo vazio -->
+  <p class="mb-3">Nenhuma oficina cadastrada.</p>
+  <a href="/oficina/cria" class="btn btn-primary btn-sm mb-3">Cadastrar a primeira oficina</a>
+{{/if}}

@@ -1,0 +1,18 @@
+<div class="text-center mt-5">
+  {{#if registro}}
+    <!-- oficina não encontrada (ID inexistente) -->
+    <i class="bi bi-search text-primary display-1" aria-hidden="true"></i>
+    <h1 class="display-1 fw-bold mt-3 mb-2">404</h1>
+    <h2 class="h4 mb-3">Oficina não encontrada</h2>
+    <p class="text-secondary mb-4">{{mensagem}}</p>
+  {{else}}
+    <!-- rota inexistente -->
+    <i class="bi bi-emoji-frown text-primary display-1" aria-hidden="true"></i>
+    <h1 class="display-1 fw-bold mt-3 mb-2">404</h1>
+    <h2 class="h4 mb-3">Página não encontrada</h2>
+    <p class="text-secondary mb-4">O endereço que você tentou acessar não existe ou foi movido.</p>
+  {{/if}}
+  <a href="/" class="btn btn-primary mb-4">
+    <i class="bi bi-house" aria-hidden="true"></i> Voltar para a Home
+  </a>
+</div>

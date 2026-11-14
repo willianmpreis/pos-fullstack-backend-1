@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/rotasIndex');
+var rotasOficina = require('./routes/rotasOficina');
 
 var app = express();
 
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/oficina', rotasOficina);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -33,7 +35,12 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  // erro 404 (rota ou oficina inexistente) usa a página 404; os demais, a página de erro
+  if (err.status === 404) {
+    res.render('404', { titulo_pagina: 'Página não encontrada', registro: err.registro,  mensagem: err.message, });
+  } else {
+    res.render('error');
+  }
 });
 
 module.exports = app;

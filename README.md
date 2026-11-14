@@ -18,7 +18,7 @@ O projeto foi construído utilizando exclusivamente a stack obrigatória da disc
 * Node.js
 * Express & Express Generator
 * Handlebars (para renderização de views no servidor)
-* Bootstrap (versão offline incorporada para estilização e componentes visuais)[cite: 2, 3]
+* Bootstrap (versão offline incorporada para estilização e componentes visuais)
 
 ---
 
